@@ -52,4 +52,4 @@ if uploaded_file is not None:
         st.write("The dataset must include the following columns:", important_features)
 
 # Footer
-st.write("Developed by [Your Name]")
+st.write("Developed by Sethvin Nanayakkara")
