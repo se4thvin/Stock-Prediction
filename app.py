@@ -93,5 +93,25 @@ importance_df = pd.DataFrame({
 fig = px.bar(importance_df, x="Feature", y="Importance", title="Feature Importances")
 st.plotly_chart(fig)
 
+# Buy/Sell Recommendation
+st.write("Should You Buy or Sell?")
+latest_data = data.iloc[-1][important_features].values.reshape(1, -1)
+prediction = model.predict_proba(latest_data)[0, 1]
+buy_signal = prediction >= threshold
+
+if buy_signal:
+    st.success(f"The model suggests a **BUY** signal with a confidence of {prediction:.2f}.")
+else:
+    st.warning(f"The model suggests a **SELL** signal with a confidence of {1 - prediction:.2f}.")
+
+# Explain the Predictions
+st.markdown("""
+### About the Predictions
+- The chart above shows historical trends in the S&P 500's performance.
+- The model analyzes past data to predict whether the stock price is likely to rise or fall.
+- A **BUY** signal indicates the stock is expected to increase in value.
+- A **SELL** signal indicates the stock is expected to decrease in value.
+""")
+
 # Footer
 st.write("Developed by Sethvin Nanayakkara")
