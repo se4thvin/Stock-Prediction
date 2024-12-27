@@ -100,9 +100,9 @@ prediction = model.predict_proba(latest_data)[0, 1]
 buy_signal = prediction >= threshold
 
 if buy_signal:
-    st.success(f"The model suggests a **BUY** signal with a confidence of {prediction:.2f}.")
+    st.success(f"The model suggests a **BUY** signal with a confidence of {prediction*100:.2f}%.")
 else:
-    st.warning(f"The model suggests a **SELL** signal with a confidence of {1 - prediction:.2f}.")
+    st.warning(f"The model suggests a **SELL** signal with a confidence of {1 - prediction*100:.2f}%.")
 
 # Explain the Predictions
 st.markdown("""
