@@ -21,7 +21,7 @@ n_estimators = st.sidebar.slider("Number of Estimators", 100, 1000, 500, step=10
 threshold = st.sidebar.slider("Prediction Threshold", 0.0, 1.0, 0.6, 0.05)
 
 # Function to fetch S&P 500 data
-@st.cache
+@st.cache_data
 def fetch_sp500_data(start_date, end_date):
     try:
         sp500_data = yf.download('^GSPC', start=start_date.strftime('%Y-%m-%d'), end=end_date.strftime('%Y-%m-%d'))
